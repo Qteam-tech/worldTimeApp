@@ -1,6 +1,9 @@
 # world_clock
 
 A new Flutter project.
+This is my first app with flutter. that follow the tutorial from The Net Ninja publicher. 
+I modified some of the code with the new version of the flutter. the was a lot of change that may help some some one.
+Best Regards 
 
 ## Getting Started
 
