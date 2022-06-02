@@ -40,12 +40,12 @@ class _HomeState extends State<Home> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10.0,
               ),
               Text(
                 data['time'],
-                style: TextStyle(fontSize: 66.0, letterSpacing: 1.0),
+                style: const TextStyle(fontSize: 66.0, letterSpacing: 1.0),
               )
             ],
           ),

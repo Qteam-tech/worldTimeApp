@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:world_clock/pages/choose_location.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:world_clock/services/world_time.dart';
 
 class Loading extends StatefulWidget {
@@ -43,8 +43,11 @@ class _MyAppState extends State<Loading> {
         appBar: AppBar(
           title: const Text('Fetch Data Example'),
         ),
-        body: Center(
-          child: Text(time),
+        body: const Center(
+          child: SpinKitChasingDots(
+            size: 50.0,
+            color: Colors.black,
+          ),
         ),
       ),
     );
