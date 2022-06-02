@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:world_clock/pages/loading.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -12,7 +11,9 @@ class _HomeState extends State<Home> {
   Map data = {};
   @override
   Widget build(BuildContext context) {
-    data = ModalRoute.of(context)!.settings.arguments as Map;
+    data = data.isNotEmpty
+        ? data
+        : ModalRoute.of(context)!.settings.arguments as Map;
     print(data);
     String bgImage = data['isDayTime'] ? 'day.jpg' : 'night.jpg';
     Color? bgColor = data['isDayTime'] ? Colors.blue : Colors.indigo[900];
@@ -31,8 +32,17 @@ class _HomeState extends State<Home> {
             child: Column(
               children: [
                 TextButton.icon(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/location');
+                    onPressed: () async {
+                      dynamic result =
+                          await Navigator.pushNamed(context, '/location');
+                      setState(() {
+                        data = {
+                          'time': result['time'],
+                          'location': result['location'],
+                          'flag': result['flag'],
+                          'isDayTime': result['isDayTime']
+                        };
+                      });
                     },
                     icon: const Icon(
                       Icons.add_location,
