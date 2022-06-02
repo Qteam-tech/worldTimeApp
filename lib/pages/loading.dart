@@ -10,11 +10,16 @@ class Loading extends StatefulWidget {
 }
 
 String time = 'loading';
+bool isDayTime = false;
 
 class _MyAppState extends State<Loading> {
   void setupWolrdTime() async {
     WorldTime instance = WorldTime(
-        location: 'Tehran', flag: 'Tehran.png', url: 'Asia/Tehran', time: time);
+        location: 'Tehran',
+        flag: 'Tehran.png',
+        url: 'Asia/Tehran',
+        time: time,
+        isDayTime: false);
     await instance.getTime();
     setState(() {
       time = instance.time;
@@ -22,7 +27,8 @@ class _MyAppState extends State<Loading> {
     Navigator.pushReplacementNamed(context, '/Home', arguments: {
       'location': instance.location,
       'flag': instance.flag,
-      'time': instance.time
+      'time': instance.time,
+      'isDayTime': instance.isDayTime,
     });
   }
 

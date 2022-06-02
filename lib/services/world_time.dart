@@ -7,12 +7,14 @@ class WorldTime {
   String time;
   String flag;
   String url;
+  bool isDayTime;
 
   WorldTime(
       {required this.location,
       required this.flag,
       required this.url,
-      required this.time});
+      required this.time,
+      required this.isDayTime});
 
   Future<void> getTime() async {
     try {
@@ -28,6 +30,7 @@ class WorldTime {
       now = now.add(
         Duration(hours: int.parse(offSetH), minutes: int.parse(offSetM)),
       );
+      isDayTime = now.hour > 6 && now.hour < 20 ? true : false;
       time = DateFormat.jm().format(now);
     } catch (e) {
       print('this is the error $e');
